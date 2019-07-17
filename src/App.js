@@ -5,13 +5,15 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      <nav>
+        <a href="/">Home</a>
+        <a href="/px-vw">PX-VW</a>
+      </nav>
       <header className="App-header">
-
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src="http://giphygifs.s3.amazonaws.com/media/13HBDT4QSTpveU/giphy.gif" className="App-logo" alt="logo" />
         <p>
           Kevin Dicke<br/>Master Developer
         </p>
-        <a href="/px-vw">PX to VW Converter</a>
       </header>
     </div>
   );
