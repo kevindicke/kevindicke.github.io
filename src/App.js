@@ -12,7 +12,7 @@ function App() {
       <header className="App-header">
         <img src="http://giphygifs.s3.amazonaws.com/media/13HBDT4QSTpveU/giphy.gif" className="App-logo" alt="logo" />
         <p>
-          Kevin Dicke<br/>Master Developer
+          Kevin Dicke<br/>Master Web Developer
         </p>
       </header>
     </div>
