@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 // import logo from './Assets/Images/computer.svg';
 import pxvw from './Components/px-vw'
 import home from './Components/Home'
@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
   return (
-    <HashRouter basename='/'>
+    <BrowserRouter basename='/'>
      <div>
      <nav>
        <Link to="/">Home</Link>
@@ -16,7 +16,7 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route path="/convert" component={Convert} />
      </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
