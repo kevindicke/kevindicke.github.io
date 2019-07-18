@@ -1,22 +1,26 @@
 import React from 'react';
+import { HashRouter, Route, Link } from "react-router-dom";
 // import logo from './Assets/Images/computer.svg';
+import pxvw from './Components/px-vw'
+import home from './Components/Home'
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <nav>
-        <a href="/">Home</a>
-        <a href="/px-vw">PX-VW</a>
-      </nav>
-      <header className="App-header">
-        <img src="http://giphygifs.s3.amazonaws.com/media/13HBDT4QSTpveU/giphy.gif" className="App-logo" alt="logo" />
-        <p>
-          Kevin Dicke<br/>Master Web Developer
-        </p>
-      </header>
-    </div>
+    <HashRouter basename='/'>
+     <div>
+     <nav>
+       <Link to="/">Home</Link>
+       <Link to="/convert">PX-VW</Link>
+     </nav>
+      <Route exact path="/" component={Home} />
+      <Route path="/convert" component={Convert} />
+     </div>
+    </HashRouter>
   );
 }
+
+const Home = () => home()
+const Convert = () => pxvw()
 
 export default App;
