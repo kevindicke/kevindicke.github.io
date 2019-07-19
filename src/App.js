@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 // import logo from './Assets/Images/computer.svg';
-import pxvw from './Components/px-vw'
+import tools from './Components/Tools'
 import home from './Components/Home'
 import './App.css';
 
@@ -11,16 +11,16 @@ function App() {
      <div>
      <nav>
        <Link to="/">Home</Link>
-       <Link to="/convert">PX-VW</Link>
+       <Link to="/tools">Tools</Link>
      </nav>
       <Route exact path="/" component={Home} />
-      <Route path="/convert" component={Convert} />
+      <Route path="/tools" component={Tools} />
      </div>
     </BrowserRouter>
   );
 }
 
 const Home = () => home()
-const Convert = () => pxvw()
+const Tools = () => tools()
 
 export default App;

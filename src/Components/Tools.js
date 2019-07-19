@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import copy from 'clipboard-copy'
 import '../App.css';
 
-function Pxvw() {
+function Tools() {
   const [display, setDisplay] = useState(false)
   const [vwVal , setVwVal] = useState("")
   const [copyVal, setCopyVal] = useState("")
@@ -73,4 +73,4 @@ const output = {display:"flex",flexDirection:"column",alignItems:"center"}
 const after = {position:"absolute",left:"75%",top:"-10px",borderWidth:"17px 15px 0",borderStyle:"solid",borderColor:"#42476a transparent",display:"block",  width:0,transform:"rotateZ(180deg)"}
 
 
-export default Pxvw;
+export default Tools;
