@@ -7,21 +7,31 @@ function Pxvw() {
   const [vwVal , setVwVal] = useState("")
   const [copyVal, setCopyVal] = useState("")
   const [isCopied, setIsCopied] = useState(false)
+  const [viewPort, setViewPort] = useState("1920")
   let pixel = React.createRef()
   let viewPixel = React.createRef()
   let outLabel = React.createRef()
   let outPut = React.createRef()
 
   function show(){
-      console.log(outLabel);
-  		var pxValue = pixel.current.value
-  		var vpwidth = viewPixel.current.value;
-  		var vwValue = String(parseFloat(pxValue / vpwidth) * 100).split(".");
+    var pxValue = pixel.current.value
+    var vpwidth = viewPixel.current.value;
+    if(Number.isInteger(parseFloat(pxValue / vpwidth) * 100)){
+      var vwValue = String(parseFloat(pxValue / vpwidth) * 100)
+    } else {
+      var vwValue = String(parseFloat(pxValue / vpwidth) * 100).split(".");
       vwValue[1] = vwValue[1].substring(0,2)
-  		vwValue = vwValue.join(".")
+      vwValue = vwValue.join(".")
+    }
       outLabel.current.innerText = vwValue + "vw";
       setVwVal(vwValue + "vw")
       setDisplay(true)
+  }
+
+  function updateViewSize(){
+    var vpwidth = viewPixel.current.value
+    setViewPort(vpwidth)
+    if(vpwidth > 0){show()}
   }
 
   function copyToClipboard() {
@@ -29,17 +39,6 @@ function Pxvw() {
     copy(vwVal)
     setIsCopied(true)
     setTimeout(() => {setIsCopied(false)},1000)
-    // console.log(outLabel.current.textContent);
-
-    // document.querySelector("button").hide()
-    // var $temp = outLabel.current.textContent;
-    // document.querySelector("body").append($temp);
-    // $temp.val(document.querySelector(element).text()).select();
-    // outLabel.current.innerHTML.select();
-    // document.execCommand("copy");
-    // $temp.remove();
-    // document.getElementById("copied").show()
-    // document.getElementById("#copied").fadeOut(1500)
   }
   return (
     <div>
@@ -50,7 +49,7 @@ function Pxvw() {
         </div>
         <div style={field}>
           <label style={label}>Enter Your viewport width</label>
-          <input style={input} ref={viewPixel} onChange={show} name="vpwidth"  type="number" min="0" className="m-vpwidth" value="1920"/>
+          <input style={input} ref={viewPixel} onChange={updateViewSize} name="vpwidth"  type="number" min="0" className="m-vpwidth" value={viewPort}/>
         </div>
         <div className="output" ref={outPut} style={display ? output : displayNone} onClick={copyToClipboard}>
           <label id="labelText" style={outputlabel} ref={outLabel}></label>
@@ -73,13 +72,5 @@ const button = {width:"500px",height:"50px",borderRadius:"1px",borderColor:"#424
 const output = {display:"flex",flexDirection:"column",alignItems:"center"}
 const after = {position:"absolute",left:"75%",top:"-10px",borderWidth:"17px 15px 0",borderStyle:"solid",borderColor:"#42476a transparent",display:"block",  width:0,transform:"rotateZ(180deg)"}
 
-// div.button{text-align:center}
-// div.button a{background:#9a297b;color:#fff;text-transform:uppercase;letter-spacing:2px;padding:13px 31px;display:inline-block;text-decoration:none;font-size:14px}
-
-// @media only screen and (min-width: 768px) {
-// body{max-width:60%}
-// .field label{font-size:1.7vw}
-// input,select{font-size:1.25vw;height:3.54vw;padding-left:.9vw;padding-right:.9vw;letter-spacing:.2vw}
-// }
 
 export default Pxvw;
